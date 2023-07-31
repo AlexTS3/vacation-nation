@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <div class="add-place">
+    <h2>Tell us about your destination!</h2>
+
+    <form #form="ngForm" (ngSubmit)="addPlace(form)" class="activity">
+      <div class="place-select">
+        <label for="name">What is your destination?</label>
+        <input type="text" id="name" name="name" ngModel #inputName="ngModel" />
+      </div>
+
+      <div class="add-img">
+        <label for="imageUrl">Add Image Url</label>
+        <input
+          type="url"
+          id="imageUrl"
+          name="imageUrl"
+          ngModel
+          #inputImageUrl="ngModel"
+        />
+      </div>
+
+      <div class="description-input">
+        <label for="description">Add description:</label>
+        <textarea
+          name="description"
+          id="description"
+          cols="10"
+          name="description"
+          ngModel
+          #inputDescription="ngModel"
+        ></textarea>
+      </div>
+
+      <div class="vehicle-choice">
+        <label for="vehicle"
+          >How can we get there?</label
+        >
+        <input
+          type="text"
+          id="vehicle"
+          name="vehicle"
+          ngModel
+          #inputVehicle="ngModel"
+        />
+      </div>
+
+      <input type="submit" value="Добави" />
+    </form>
+
+    <h2><a routerLink="/">Home Page</a></h2>
+  </div>
+</div>

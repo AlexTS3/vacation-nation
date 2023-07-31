@@ -1,0 +1,31 @@
+/* Nav-bar styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(250, 215, 172);
+}
+
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    text-transform: uppercase;
+}
+
+nav {
+    margin: 4em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    gap: 3em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    position: relative;
+}

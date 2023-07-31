@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "vacation-nation-91ae6": {
+      "hosting": {
+        "Vacation-Nation": [
+          "vacation-nation-91ae6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "vacation-nation-91ae6"
+  }
+}

@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <form #form="ngForm" (ngSubmit)="registerUser(form)">
+        <h2>Register</h2>
+
+        <label for="email"><span>Enter your email:</span></label>
+        <input type="email" name="email" id="email" class="email" placeholder="george@gmail.com" ngModel #inputEmail="ngModel">
+        
+        <label for="userName"><span>Enter your email:</span></label>
+        <input type="userName" name="userName" id="userName" class="userName" placeholder="george" ngModel #inputUsername="ngModel">
+
+        <label for="password"><span>Enter your password:</span></label>
+        <input type="password" name="password" id="password" class="password" placeholder="********" ngModel #inputPassword="ngModel">
+
+        <label for="re-password"><span>Repeat password:</span></label>
+        <input type="password" name="re-password" id="re-password" class="re-password" placeholder="********" ngModel #inputRePassword="ngModel">
+
+        <button>Register</button>
+
+        <p>Already have an account?
+            <a routerLink="/login">Login Here!</a>
+        </p>
+    </form>
+</div>
