@@ -17,8 +17,7 @@ export class RegisterComponent {
     const {email, userName, password} = form.value;
     const _id = uuidv4();
 
-    this.userService.register(email, userName, password, _id).subscribe(() => {
-      this.router.navigate(['/']);
-    })
+    this.userService.register(email, password);
+    this.router.navigate(['/']);
   }
 }

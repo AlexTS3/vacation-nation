@@ -14,7 +14,12 @@ import { PlacesModule } from './places/places.module';
 import { AboutComponent } from './about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundModule } from './not-found/not-found.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DetailsComponent,
     SearchComponent,
     AboutComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +38,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
     UserModule,
     PlacesModule,
     HttpClientModule,
-    FormsModule
+    AngularFireModule.initializeApp(environment.firebase),
+    FormsModule,
+    NotFoundModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideDatabase(() => getDatabase()),
+    provideAuth(() => getAuth()),
   ],
-  providers: [],
+  providers: [AngularFireModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

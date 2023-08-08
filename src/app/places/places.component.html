@@ -1,12 +1,14 @@
 <div class="wrapper">
   <div class="places">
-    <div class="place" *ngFor="let place of placesArr">
-      <img class="place-img" src="" alt="Arda River" />
-      <p class="preview">{{place}}</p>
-      <a class="info-btn" href=""> More Info </a>
+    <div *ngIf="placesArr">
+      <div class="place" *ngFor="let place of placesArr">
+        <img class="place-img" src="{{place.imageUrl}}" />
+        <p class="preview">{{place.name}}</p>
+        <a class="info-btn" routerLink="details/{{place.id}}"> More Info </a>
+      </div>
     </div>
 
-    <h1>We have no destinations yet!</h1>
+    <h1 *ngIf="!placesArr">We have no destinations yet!</h1>
   </div>
   <h2><a routerLink="/">Home Page</a></h2>
 </div>

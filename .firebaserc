@@ -6,6 +6,13 @@
           "vacation-nation-91ae6"
         ]
       }
+    },
+    "vacation-nation-users": {
+      "hosting": {
+        "Vacation-Nation": [
+          "vacation-nation-users"
+        ]
+      }
     }
   },
   "projects": {

@@ -7,12 +7,16 @@ import { PlacesService } from './places.service';
   styleUrls: ['./places.component.css'],
 })
 export class PlacesComponent implements OnInit {
-  placesArr: Array<object> = [];
+  placesArr: any = [];
 
   constructor(private placesService: PlacesService) {}
 
   ngOnInit(): void {
-    
+     const places = this.placesService.getPlaces().subscribe((places) => {
+      this.placesArr = places;
+
+      this.placesArr = Object.values(this.placesArr);
+      console.log(this.placesArr);
+    });
   }
-  
 }

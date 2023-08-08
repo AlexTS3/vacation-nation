@@ -24,9 +24,13 @@ const routes: Routes = [
     component: PlannedComponent,
   },
   {
-    path: 'details',
+    path: 'places/details/:placeId',
     component: DetailsComponent,
   },
+  // {
+  //   path: 'edit/:placeId',
+  //   component: DetailsComponent,
+  // },
 ];
 
 @NgModule({

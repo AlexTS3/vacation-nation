@@ -1,12 +1,12 @@
 <div class="wrapper">
-    <form>
+    <form #form="ngForm" (ngSubmit)="login(form)">
         <h2>Login</h2>
 
-        <label for="email"><span>Enter your email:</span></label>
-        <input type="email" name="email" id="email" class="email" placeholder="george@gmail.com">
+        <label for="userName"><span>Enter your username:</span></label>
+        <input type="userName" name="userName" id="userName" class="userName" placeholder="Username" ngModel #inputUserName="ngModel">
 
         <label for="password"><span>Enter your password:</span></label>
-        <input type="password" name="password" id="password" class="password" placeholder="********">
+        <input type="password" name="password" id="password" class="password" placeholder="********" ngModel #inputPassword="ngModel">
 
         <button>Login</button>
 

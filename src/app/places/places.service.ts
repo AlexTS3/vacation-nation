@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Database, set, ref, update, onValue } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlacesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private database: Database) {}
 
   getPlaces() {
     return this.http.get(
-      'https://vacation-nation-91ae6-default-rtdb.firebaseio.com/.json'
+      'https://vacation-nation-91ae6-default-rtdb.firebaseio.com/places.json'
     );
   }
 
@@ -20,10 +21,12 @@ export class PlacesService {
     vehicle: string,
     _id: string
   ) {
-    return this.http.post(
-      'https://vacation-nation-91ae6-default-rtdb.firebaseio.com/.json',
-      { name, imageUrl, description, vehicle, _id }
-    );
+    set(ref(this.database, 'places/' + name), {
+      name: name,
+      imageUrl: imageUrl,
+      description: description,
+      vehicle: vehicle,
+      userId: _id,
+    });
   }
 }
-2;
