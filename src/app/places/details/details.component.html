@@ -1,13 +1,27 @@
 <div class="wrapper">
-  <h1>Test</h1>
+  <div class="profileContainer" *ngIf="detailsPlace">
 
-  <div class="details-img">
-    <img src="" class="place" />
+    <h1>{{detailsPlace?.name}}</h1>
+  
+    <div class="details-img">
+      <img src="{{detailsPlace?.imageUrl}}" class="place" />
+    </div>
+  
+    <div class="place-description">
+      <p>{{detailsPlace?.description}}</p>
+      <div class="detailsBtns" *ngIf="isOwner">
+        <a routerLink="/places">Back</a>
+        <a routerLink="/places/edit">Edit</a>
+        <a (click)="delete()">Delete</a>
+      </div>
+      <div class="detailsBtns" *ngIf="!isOwner">
+        <a routerLink="/places">Back</a>
+      </div>
+    </div>
   </div>
 
-  <div class="place-description">
-    <p>Testing</p>
-    <a routerLink="/places">Back</a>
+  <div class="profileContainer" *ngIf="!detailsPlace">
+    <h1>There are no places yet!</h1>
   </div>
 
   <h2><a routerLink="/">Home Page</a></h2>

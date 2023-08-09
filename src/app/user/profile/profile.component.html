@@ -1,1 +1,19 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="user-info">
+        <h1 class="user-email">Profile email: {{user.email}}</h1> 
+        <h1 class="place-count"></h1>
+
+    </div>
+    <div class="places" *ngIf="userPlaces">
+        <div *ngFor="let place of userPlaces" class="place">
+            <img src="{{place.imageUrl}}" alt="">
+            <h1 class="place-name">{{place.name}}</h1>
+            <p class="place-description">{{place.description}}</p>
+            <a routerLink="/:placeId/edit" class="editBtn">Edit</a>
+            <a class="deleteBtn" (click)="deletePlace(place.userId)">Delete</a>
+        </div>
+    </div>
+    <div class="places" *ngIf="!userPlaces">
+        <h1>No places to show!</h1>
+    </div>
+</div>

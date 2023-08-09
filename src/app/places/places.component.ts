@@ -14,9 +14,14 @@ export class PlacesComponent implements OnInit {
   ngOnInit(): void {
      const places = this.placesService.getPlaces().subscribe((places) => {
       this.placesArr = places;
-
-      this.placesArr = Object.values(this.placesArr);
-      console.log(this.placesArr);
+      if(this.placesArr){
+        this.placesArr = Object.values(this.placesArr);
+        // console.log(this.placesArr);
+      }
+      // console.log('places subs')
+      // console.log(places)
+      // console.log('places Arr')
+      // console.log(this.placesArr)
     });
   }
 }

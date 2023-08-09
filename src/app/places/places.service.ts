@@ -21,7 +21,7 @@ export class PlacesService {
     vehicle: string,
     _id: string
   ) {
-    set(ref(this.database, 'places/' + name), {
+    set(ref(this.database, 'places/' + _id), {
       name: name,
       imageUrl: imageUrl,
       description: description,

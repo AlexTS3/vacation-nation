@@ -24,7 +24,7 @@ const routes: Routes = [
     component: PlannedComponent,
   },
   {
-    path: 'places/details/:placeId',
+    path: 'places/:placeId/details',
     component: DetailsComponent,
   },
   // {

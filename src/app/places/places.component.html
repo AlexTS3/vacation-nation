@@ -4,7 +4,7 @@
       <div class="place" *ngFor="let place of placesArr">
         <img class="place-img" src="{{place.imageUrl}}" />
         <p class="preview">{{place.name}}</p>
-        <a class="info-btn" routerLink="details/{{place.id}}"> More Info </a>
+        <a class="info-btn" routerLink="{{place.userId}}/details"> More Info </a>
       </div>
     </div>
 

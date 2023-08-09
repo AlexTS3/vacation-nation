@@ -16,7 +16,6 @@ export class LoginComponent {
 
   login(form: NgForm): void {
     const { userName, password } = form.value;
-    console.log('login component');
     this.userService.login(userName, password);
     this.router.navigate(['/']);
   }

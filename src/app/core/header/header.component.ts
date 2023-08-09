@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { UserServiceService } from 'src/app/user/user-service.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { UserServiceService } from 'src/app/user/user-service.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  isUser: boolean = false;
+  isUser$!: Observable<boolean>;
+
 
   constructor(
     private userService: UserServiceService,
@@ -16,24 +18,17 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const userCheck = localStorage.length > 0
-    this.isUser = userCheck
-  }
+    const user = localStorage.getItem('Current-User');
+    this.isUser$ = this.userService.isUser();
+    // this.user = JSON.parse(localStorage.getItem('Current-User')!);
 
-  // checkUser(){
-  //   console.log('test ng init')
-  //   const user = localStorage.length > 0;
-  //   console.log(user)
-  //   if (user) {
-  //     console.log(this.isUser)
-  //     this.isUser = true;
-  //     console.log(this.isUser)
-  //   }
-  // }
+  }
 
   logout() {
     this.userService.logout();
-    this.isUser = false;
+    // this.isUser$ = false;
+    // this.isUser$ = this.userService.isUser();
+    // console.log(`logout ${this.isUser$}`)
     this.router.navigate(['/']);
   }
 }

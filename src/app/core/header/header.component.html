@@ -3,7 +3,7 @@
     <li class="logo"><a routerLink="/">Destination Nation</a></li>
   </div>
   <nav>
-    <ul class="navigation" *ngIf="isUser === false">
+    <ul class="navigation" *ngIf="!(isUser$ | async)">
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/places">Destinations</a></li>
       <li><a routerLink="/search">Search</a></li>
@@ -11,11 +11,12 @@
       <li><a routerLink="/register">Register</a></li>
       <li><a routerLink="/about">About</a></li>
     </ul>
-    <ul class="navigation" *ngIf="isUser === true">
+    <ul class="navigation" *ngIf="isUser$ | async">
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/places">Destinations</a></li>
       <li><a routerLink="/search">Search</a></li>
       <li><a routerLink="/add-place">Add Destination</a></li>
+      <li><a routerLink="/profile">My Profile</a></li>
       <li><a routerLink="/" (click)="logout()">Logout</a></li>
       <li><a routerLink="/about">About</a></li>
     </ul>

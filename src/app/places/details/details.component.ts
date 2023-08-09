@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from '../places.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserServiceService } from 'src/app/user/user-service.service';
 
 @Component({
   selector: 'app-details',
@@ -8,25 +9,33 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  placesArr: any = [];
+  detailsPlace: any;
+  isOwner: boolean = false;
   currentPlace: any;
-  constructor(private placesService: PlacesService, private route: ActivatedRoute) {}
+  constructor(
+    private placesService: PlacesService,
+    private route: ActivatedRoute,
+    private userService: UserServiceService
+  ) {}
 
   ngOnInit(): void {
     this.placesService.getPlaces().subscribe((places) => {
-      this.placesArr = places;
+      // this.detailsPlace = places;
+
       const id = this.fetchData();
-      
-      this.placesArr = Object.values(this.placesArr).forEach((place) => {
-      
+      this.currentPlace = Object.values(places).forEach((place: any) => {
+        this.detailsPlace = place;
+        const currentUserId = this.userService.getUserData()['uid'];
+        const id = place.userId;
+        this.isOwner = id === currentUserId;
       });
-      
+
     });
   }
 
-
+  delete() {}
   fetchData() {
     const id = this.route.snapshot.params['placeId'];
-    console.log(id)
+    return id;
   }
 }
