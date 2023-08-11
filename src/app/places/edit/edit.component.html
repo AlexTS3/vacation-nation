@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <div class="add-place">
+      <h2>Add changes to your place:</h2>
+  
+      <form #form="ngForm" (ngSubmit)="editPlace(form)" class="activity">
+        <div class="place-select">
+          <label for="name">What is your destination?</label>
+          <input type="text" id="name" name="name" ngModel="{{place?.name}}" #inputName="ngModel" />
+        </div>
+  
+        <div class="add-img">
+          <label for="imageUrl">Add Image Url</label>
+          <input
+            type="url"
+            id="imageUrl"
+            name="imageUrl"
+            ngModel="{{place?.imageUrl}}"
+            #inputImageUrl="ngModel"
+          />
+        </div>
+  
+        <div class="description-input">
+          <label for="description">Add description:</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="10"
+            name="description"
+            ngModel="{{place?.description}}"
+            #inputDescription="ngModel"
+          ></textarea>
+        </div>
+  
+        <input type="submit" value="Edit" />
+      </form>
+  
+      <h2><a routerLink="/">Home Page</a></h2>
+    </div>
+  </div>
+  

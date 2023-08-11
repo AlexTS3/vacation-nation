@@ -24,9 +24,6 @@ export class ProfileComponent implements OnInit {
     const places = this.placeService.getPlaces().subscribe((places) => {
       this.currentPlaces = places;
       this.currentPlaces = Object.values(this.currentPlaces);
-      console.log(this.currentPlaces);
-      console.log(this.userPlaces);
-      console.log(places);
       this.currentPlaces.forEach((place: any) => {
         if (currentUser['uid'] === place['userId']) {
           this.userPlaces.push(place);

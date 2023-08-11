@@ -19,21 +19,24 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.placesService.getPlaces().subscribe((places) => {
-      // this.detailsPlace = places;
+    const currentUserId = this.userService.getUserData()['uid'];
+    const paramsId = this.fetchData();
 
-      const id = this.fetchData();
-      this.currentPlace = Object.values(places).forEach((place: any) => {
-        this.detailsPlace = place;
-        const currentUserId = this.userService.getUserData()['uid'];
-        const id = place.userId;
-        this.isOwner = id === currentUserId;
-      });
-
+    this.placesService.getPlaceById(paramsId).subscribe((place) => {
+      this.currentPlace = place;
+      const owner = place['userId'];
+      this.isOwner = owner === currentUserId;
     });
   }
 
-  delete() {}
+  delete(placeId: string) {
+    const confirmation = confirm('Are you sure you want to delete this place?');
+
+    if(confirmation) {
+      this.placesService.delete(placeId)
+    }
+  }
+
   fetchData() {
     const id = this.route.snapshot.params['placeId'];
     return id;

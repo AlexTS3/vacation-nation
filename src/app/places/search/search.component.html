@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <div class="form-info">
+        <h2>Search places:</h2>
+
+
+        <form
+        #form="ngForm"
+        class="searchBar"
+        (ngSubmit)="searchPlaces(form)"
+      >
+        <input
+          type="text"
+          placeholder="Search..."
+          formControlName="searchValue"
+          class="searchBarInput"
+        />
+      </form>
+
+        <!-- <div class="wrapper">
+            <div class="places">
+              <div *ngIf="placesArr">
+                <div class="place" *ngFor="let place of placesArr">
+                  <img class="place-img" src="{{place.imageUrl}}" />
+                  <p class="preview">{{place.name}}</p>
+                  <a class="info-btn" routerLink="{{place.placeId}}/details"> More Info </a>
+                </div>
+              </div>
+          
+              <h1 *ngIf="!placesArr">We have no destinations yet!</h1>
+            </div>
+            <h2><a routerLink="/">Home Page</a></h2>
+          </div> -->
+          
+        <h2><a href="/">Към Начална Страница</a></h2>
+
+    </div>
+</div>

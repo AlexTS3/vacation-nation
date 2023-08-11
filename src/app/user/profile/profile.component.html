@@ -9,7 +9,7 @@
             <img src="{{place.imageUrl}}" alt="">
             <h1 class="place-name">{{place.name}}</h1>
             <p class="place-description">{{place.description}}</p>
-            <a routerLink="/:placeId/edit" class="editBtn">Edit</a>
+            <a routerLink="{{place.userId}}/edit" class="editBtn">Edit</a>
             <a class="deleteBtn" (click)="deletePlace(place.userId)">Delete</a>
         </div>
     </div>

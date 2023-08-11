@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { PlacesService } from '../places.service';
 import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/user/user-service.service';
+import { v4 as uuidv4 } from 'uuid';
+
 
 @Component({
   selector: 'app-add-place',
@@ -10,15 +12,20 @@ import { UserServiceService } from 'src/app/user/user-service.service';
   styleUrls: ['./add-place.component.css'],
 })
 export class AddPlaceComponent {
-  constructor(private placesService: PlacesService, private router: Router, private userService: UserServiceService) {}
+  constructor(
+    private placesService: PlacesService,
+    private router: Router,
+    private userService: UserServiceService
+  ) {}
 
   addPlace(form: NgForm): void {
-    const userData = this.userService.getUserData()
-    console.log(userData['uid']);
-    if(userData['uid']) {
-      const { name, imageUrl, description, vehicle } = form.value;
+    const userData = this.userService.getUserData();
+    const userId = userData['uid'];
+    const id = uuidv4();
+    if (userId) {
+      const { name, imageUrl, description } = form.value;
       console.log(userData['uid']);
-      this.placesService.newPlace(name, imageUrl, description, vehicle, userData['uid']);
+      this.placesService.newPlace(name, imageUrl, description, userId, id);
       this.router.navigate(['/places']);
     }
   }

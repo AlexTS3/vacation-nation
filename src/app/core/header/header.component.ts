@@ -9,8 +9,7 @@ import { UserServiceService } from 'src/app/user/user-service.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  isUser$!: Observable<boolean>;
-
+  isLogged$!: Observable<boolean>;
 
   constructor(
     private userService: UserServiceService,
@@ -18,8 +17,10 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const user = localStorage.getItem('Current-User');
-    this.isUser$ = this.userService.isUser();
+    this.isLogged$ = this.userService.isLogged();
+
+    
+    console.log(this.isLogged$)
     // this.user = JSON.parse(localStorage.getItem('Current-User')!);
 
   }

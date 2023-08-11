@@ -1,18 +1,18 @@
 <div class="wrapper">
-  <div class="profileContainer" *ngIf="detailsPlace">
+  <div class="profileContainer" *ngIf="currentPlace">
 
-    <h1>{{detailsPlace?.name}}</h1>
+    <h1>{{currentPlace?.name}}</h1>
   
     <div class="details-img">
-      <img src="{{detailsPlace?.imageUrl}}" class="place" />
+      <img src="{{currentPlace?.imageUrl}}" class="place" />
     </div>
   
     <div class="place-description">
-      <p>{{detailsPlace?.description}}</p>
+      <p>{{currentPlace?.description}}</p>
       <div class="detailsBtns" *ngIf="isOwner">
         <a routerLink="/places">Back</a>
-        <a routerLink="/places/edit">Edit</a>
-        <a (click)="delete()">Delete</a>
+        <a routerLink="/places/{{currentPlace?.placeId}}/edit">Edit</a>
+        <a routerLink="/places" (click)="delete(currentPlace?.placeId)">Delete</a>
       </div>
       <div class="detailsBtns" *ngIf="!isOwner">
         <a routerLink="/places">Back</a>

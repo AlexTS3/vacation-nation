@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserServiceService {
-  isUser$$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLogged$$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   userEmail: string = ''
   userUid: string = ''
 
@@ -23,8 +23,8 @@ export class UserServiceService {
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         this.agFireAuth.authState.subscribe((user) => {
-          localStorage.setItem('Current-User', JSON.stringify(user));
-          this.isUser$$.next(true);
+          sessionStorage.setItem('Current-User', JSON.stringify(user));
+          this.isLogged$$.next(true);
           // this.router.navigate(['/login'])
         });
       })
@@ -39,8 +39,8 @@ export class UserServiceService {
       .then(() => {
         this.agFireAuth.authState.subscribe((user) => {
           
-          localStorage.setItem('Current-User', JSON.stringify(user));
-          this.isUser$$.next(true);
+          sessionStorage.setItem('Current-User', JSON.stringify(user));
+          this.isLogged$$.next(true);
         });
       })
       .catch((e) => {
@@ -48,19 +48,19 @@ export class UserServiceService {
       });
   }
   getUserData() {
-    const currentUser = JSON.parse(localStorage.getItem('Current-User')!);
+    const currentUser = JSON.parse(sessionStorage.getItem('Current-User')!) || '';
     return currentUser
 
   }
 
   logout() {
     this.agFireAuth.signOut().then(() => {
-      localStorage.clear();
-      this.isUser$$.next(false);
+      sessionStorage.clear();
+      this.isLogged$$.next(false);
     });
   }
 
-  isUser() {
-    return this.isUser$$.asObservable();
+  isLogged() {
+    return this.isLogged$$.asObservable();
   }
 }

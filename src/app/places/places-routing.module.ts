@@ -5,6 +5,7 @@ import { AddPlaceComponent } from './add-place/add-place.component';
 import { MyPlacesComponent } from './my-places/my-places.component';
 import { PlannedComponent } from './planned/planned.component';
 import { DetailsComponent } from './details/details.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   {
@@ -27,10 +28,14 @@ const routes: Routes = [
     path: 'places/:placeId/details',
     component: DetailsComponent,
   },
-  // {
-  //   path: 'edit/:placeId',
-  //   component: DetailsComponent,
-  // },
+  {
+    path: 'profile/:placeId/edit',
+    component: EditComponent,
+  },
+  {
+    path: 'places/:placeId/edit',
+    component: EditComponent,
+  },
 ];
 
 @NgModule({
