@@ -1,54 +1,103 @@
-/* Search section styles */
-.form-info {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    width: 60%;
-    font-size: 20px;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100vw;
+  height: 75vh;
+  font-size: 20px;
+  background-color: rgb(248, 191, 122);
 }
 
-.activity {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+.form-container h2 {
+  font-family: "Roboto Slab", serif;
+  font: bold;
+  font-size: 40px;
 }
 
-.activity .checkbox {
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-direction: row;
+.form-container input {
+  width: 400px;
+  height: 60px;
+  font-size: 30px;
+  align-self: center;
 }
 
-.activity .place-select {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4em;
+.form-container button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: fit-content;
+  align-self: center;
+  text-decoration: none;
+  font-size: 25px;
+  font-family: "Roboto Slab", serif;
+  color: white;
+  background-color: black;
+  font: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.activity .place-select select {
-    width: 80%;
-    text-align: center;
-    font-size: 15px;
+.form-container button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  transform: scale(1.02);
+  box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
 }
 
-.activity .vehicle-choice {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4em;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.activity .vehicle-choice select {
-    width: 80%;
-    text-align: center;
-    font-size: 15px;
+.places {
+  width: 300px;
+  margin: 10px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  transition: 0.5s;
 }
 
-.activity input[type="submit"] {
-    width: fit-content;
-    font-size: 20px;
-    align-self: center;
+/* .places:hover {
+  box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
+  transform: scale(1.02);
+} */
+
+.places .place-img img {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.place .preview p {
+  font-family: "Roboto Slab", serif;
+  font: bold;
+}
+
+.places .info-btn a {
+  color: white;
+  background-color: black;
+  padding: 2px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-family: "Roboto Slab", serif;
+  transition: 0.2s;
+}
+
+.places .info-btn a:hover {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  transform: scale(1.02);
+}
+
+.wrapper h1 {
+  font-family: "Roboto Slab", serif;
+  font: bold;
+  font-size: 30px;
 }

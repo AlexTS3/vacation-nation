@@ -1,34 +1,45 @@
-/* Home Page  */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
+
 .home-container {
-    width: auto;
-    max-height: 700px;
-    text-align: center;
+  width: auto;
+  max-height: 700px;
+  text-align: center;
 }
 
 .home-container img {
-    height: 550px;
+  height: 550px;
 }
 
 .home-container .home-nav {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
 }
 
 .home-container .home-nav a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  font-family: "Roboto Slab", serif;
+  color: black;
+  transition: 0.2s ease 0s;
+}
+
+.home-container .home-nav a:hover{
+    transform: scale(1.2);
+}
+
+.home-container .home-nav h2 {
+    font-family: 'Roboto Slab', serif;
+    font: bold;
 }
 
 /* Main body div styles  */
 .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: auto;
-    min-height: 650px;
-    padding: 1em;
-    background-color: rgb(248, 191, 122);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: auto;
+  min-height: 650px;
+  padding: 1em;
+  background-color: rgb(248, 191, 122);
 }
-

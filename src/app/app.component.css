@@ -1,19 +1,8 @@
-/* Body styles */
-body {
-    margin: 0;
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
     min-height: 100vh;
-    background-color:aqua;
-}
-
-/* Container div styles  */
-.container {
-    max-width: auto;
-    margin: 0 auto;
-    background-color: antiquewhite;
-}
-
-/* Home Page redirect button styles  */
-.wrapper h2 a {
-    text-decoration: none;
-    color: black;
+    min-width: 100vw;
 }
