@@ -27,7 +27,7 @@ export class EditComponent implements OnInit {
     const userId = this.userService.getUserData()['uid'];
     this.placesService.getPlaceById(this.placeId).subscribe((place) => {
       this.place = place
-      if(userId === place['userId']){
+      if(userId === place['ownerId']){
         this.placesService.updatePlace(this.placeId, form.value)
       }
       this.router.navigate([`/places`])

@@ -23,23 +23,32 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     const query = this.route.snapshot.paramMap.get('query');
 
-    this.searchPlace(query)
+    if(query) {
+      this.searchPlace(query)
+    }
     // this.searchResult = place
   }
 
   searchPlace(query: string) {
     this.places = [];
     // const query = this.route.snapshot.paramMap.get('query');
-    this.placesService.searchPlaces()
-    .forEach((places) => {
-      Object.values(places).forEach((check: any) => {
-        const checkName = check['name'].toLowerCase().split(' ')
-        const includes = checkName.includes(query.toLowerCase())
-        if(includes){
-          this.places.push(check)
-        }
-      })
-    });
+     this.placesService.searchPlaces().subscribe((placeData)=>{
+       const searchPlaces = placeData
+       console.log(searchPlaces)
+       if(searchPlaces) {
+         searchPlaces.forEach((places) => {
+          if(query) {
+            Object.values(places).forEach((check: any) => {
+              const checkName = check['name'].toLowerCase().split(' ')
+              const includes = checkName.includes(query.toLowerCase())
+              if(includes){
+                this.places.push(check)
+              }
+            })
+          }
+        });
+       }
+    })
     this.router.navigate([`search/${query}`]);
   }
 }

@@ -20,12 +20,12 @@ export class AddPlaceComponent {
 
   addPlace(form: NgForm): void {
     const userData = this.userService.getUserData();
-    const userId = userData['uid'];
+    const ownerId = userData['uid'];
     const id = uuidv4();
-    if (userId) {
+    if (ownerId) {
       const { name, imageUrl, description } = form.value;
       console.log(userData['uid']);
-      this.placesService.newPlace(name, imageUrl, description, userId, id);
+      this.placesService.newPlace(name, imageUrl, description, ownerId, id);
       this.router.navigate(['/places']);
     }
   }

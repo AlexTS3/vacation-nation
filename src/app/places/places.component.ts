@@ -12,7 +12,7 @@ export class PlacesComponent implements OnInit {
   constructor(private placesService: PlacesService) {}
 
   ngOnInit(): void {
-     const places = this.placesService.getPlaces().subscribe((places) => {
+     this.placesService.getPlaces().subscribe((places) => {
       this.placesArr = places;
       if(this.placesArr){
         this.placesArr = Object.values(this.placesArr);

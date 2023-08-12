@@ -1,19 +1,20 @@
 <div class="container">
     <div class="user-info">
         <h1 class="user-email">Profile email: {{user.email}}</h1> 
-        <h1 class="place-count"></h1>
-
+        <h1 class="place-count">Added places: {{userPlaces.length}}</h1>
+        <a routerLink="planned">My Planned Places</a>
     </div>
-    <div class="places" *ngIf="userPlaces">
+    <div class="places" *ngIf="userPlaces.length > 0">
         <div *ngFor="let place of userPlaces" class="place">
             <img src="{{place.imageUrl}}" alt="">
             <h1 class="place-name">{{place.name}}</h1>
             <p class="place-description">{{place.description}}</p>
-            <a routerLink="{{place.userId}}/edit" class="editBtn">Edit</a>
-            <a class="deleteBtn" (click)="deletePlace(place.userId)">Delete</a>
+            <a routerLink="{{place.placeId}}/edit" class="editBtn">Edit</a>
+            <a routerLink="/places" (click)="deletePlace(place.placeId)">Delete</a>
+
         </div>
     </div>
-    <div class="places" *ngIf="!userPlaces">
+    <div class="places" *ngIf="userPlaces.length == 0">
         <h1>No places to show!</h1>
     </div>
 </div>

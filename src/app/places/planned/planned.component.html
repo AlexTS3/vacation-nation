@@ -1,1 +1,25 @@
-<p>planned works!</p>
+<div class="wrapper">
+    <div class="places" *ngIf="!isAdding">
+      <div *ngIf="plannedPlaces">
+        <div class="place" *ngFor="let place of plannedPlaces">
+          <img class="place-img" src="{{place.imageUrl}}" />
+          <p class="preview">{{place.name}}</p>
+          <a class="info-btn" routerLink="{{place.placeId}}/details"> More Info </a>
+        </div>
+      </div>
+  
+      <h1 *ngIf="!plannedPlaces">No plans to show!</h1>
+    </div>
+
+    <div class="places" *ngIf="isAdding">
+      <div *ngIf="place">
+        <div class="place">
+          <img class="place-img" src="{{place.imageUrl}}" />
+          <p class="preview">{{place.name}}</p>
+          <a class="info-btn" routerLink="{{place.placeId}}/details"> More Info </a>
+        </div>
+      </div>
+    </div>
+    <h2><a routerLink="/">Home Page</a></h2>
+  </div>
+  

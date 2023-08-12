@@ -11,19 +11,19 @@
 
     <div class="wrapper">
             <div class="places">
-              <div *ngIf="places">
+              <div *ngIf="places.length > 0">
                 <div class="place" *ngFor="let place of places">
                   <img class="place-img" src="{{place.imageUrl}}" />
                   <p class="preview">{{place.name}}</p>
-                  <a class="info-btn" routerLink="{{place.placeId}}/details"> More Info </a>
+                  <a class="info-btn" routerLink="places/{{place.placeId}}/details"> More Info </a>
                 </div>
               </div>
           
-              <h1 *ngIf="!places">We have no destinations yet!</h1>
+              
+              <h1 *ngIf="places.length == 0">Search places here!</h1>
             </div>
-            <h2><a routerLink="/">Home Page</a></h2>
           </div>
 
-    <h2><a href="/">Към Начална Страница</a></h2>
+    <h2><a routerLink="/">Home Page</a></h2>
   </div>
 </div>

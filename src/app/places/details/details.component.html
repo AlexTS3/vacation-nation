@@ -9,19 +9,19 @@
   
     <div class="place-description">
       <p>{{currentPlace?.description}}</p>
-      <div class="detailsBtns" *ngIf="isOwner">
+      <div class="detailsBtns" *ngIf="isOwner && isUser">
         <a routerLink="/places">Back</a>
         <a routerLink="/places/{{currentPlace?.placeId}}/edit">Edit</a>
         <a routerLink="/places" (click)="delete(currentPlace?.placeId)">Delete</a>
       </div>
-      <div class="detailsBtns" *ngIf="!isOwner">
+      <div class="detailsBtns" *ngIf="!isOwner && isUser">
+        <a routerLink="/planned/{{currentPlace.placeId}}">Add To My Plans</a>
+        <a routerLink="/places">Back</a>
+      </div>
+      <div class="detailsBtns" *ngIf="!isOwner && !isUser">
         <a routerLink="/places">Back</a>
       </div>
     </div>
-  </div>
-
-  <div class="profileContainer" *ngIf="!detailsPlace">
-    <h1>There are no places yet!</h1>
   </div>
 
   <h2><a routerLink="/">Home Page</a></h2>

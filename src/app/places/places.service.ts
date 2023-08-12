@@ -44,9 +44,26 @@ export class PlacesService {
       name: name,
       imageUrl: imageUrl,
       description: description,
-      userId: userId,
+      ownerId: userId,
       placeId: placeId,
     });
+  }
+
+  addToPlans(userId: string, data: object) {
+    set(ref(this.database, `planned/${userId + ' '}` + data['placeId']), {
+      name: data['name'],
+      imageUrl: data['imageUrl'],
+      description: data['description'],
+      ownerId: data['ownerId'],
+      placeId: data['placeId'],
+    });
+  };
+
+  getPlanned(){
+    console.log('Getting planned')
+    return this.http.get(
+      `https://vacation-nation-91ae6-default-rtdb.firebaseio.com/planned.json`
+    );
   }
 
   getPlaceById(placeId: string) {

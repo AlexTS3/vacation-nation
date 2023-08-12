@@ -12,6 +12,7 @@ export class DetailsComponent implements OnInit {
   detailsPlace: any;
   isOwner: boolean = false;
   currentPlace: any;
+  isUser: boolean = false;
   constructor(
     private placesService: PlacesService,
     private route: ActivatedRoute,
@@ -24,7 +25,13 @@ export class DetailsComponent implements OnInit {
 
     this.placesService.getPlaceById(paramsId).subscribe((place) => {
       this.currentPlace = place;
-      const owner = place['userId'];
+      const owner = place['ownerId'];
+      console.log(owner)
+      console.log(this.isUser)
+      if(currentUserId) {
+        this.isUser = true
+      }
+      console.log(this.isUser)
       this.isOwner = owner === currentUserId;
     });
   }
