@@ -60,7 +60,6 @@ export class PlacesService {
   };
 
   getPlanned(){
-    console.log('Getting planned')
     return this.http.get(
       `https://vacation-nation-91ae6-default-rtdb.firebaseio.com/planned.json`
     );
@@ -80,5 +79,9 @@ export class PlacesService {
 
   delete(placeId: string) {
     remove(ref(this.database, 'places/' + placeId));
+  }
+
+  deletePlanned(placeId: string) {
+    remove(ref(this.database, 'planned/' + placeId));
   }
 }

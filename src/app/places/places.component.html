@@ -1,14 +1,23 @@
 <div class="wrapper">
-  <div class="places">
-    <div *ngIf="placesArr">
+  <div class="loader" *ngIf="isLoading">
+    <app-loader></app-loader>
+  </div>
+  <div *ngIf="!isLoading">
+    <div class="places-cards" *ngIf="placesArr">
       <div class="place" *ngFor="let place of placesArr">
-        <img class="place-img" src="{{place.imageUrl}}" />
-        <p class="preview">{{place.name}}</p>
-        <a class="info-btn" routerLink="{{place.placeId}}/details"> More Info </a>
+        <div class="place-img"><img src="{{ place.imageUrl }}" /></div>
+        <div class="preview">
+          <p>{{ place.name }}</p>
+        </div>
+        <div class="info-btn">
+          <button routerLink="{{ place.placeId }}/details"> Explore </button>
+        </div>
       </div>
     </div>
-
-    <h1 *ngIf="!placesArr">We have no destinations yet!</h1>
   </div>
-  <h2><a routerLink="/">Home Page</a></h2>
+  <div *ngIf="!placesArr">
+    <h1 class="no-destinations" >
+      We have no destinations yet!
+    </h1>
+  </div>
 </div>

@@ -1,14 +1,19 @@
 <div class="wrapper">
+  <div *ngIf="isLoading">
+    <app-loader></app-loader>
+  </div>
     <div class="places" *ngIf="!isAdding">
-      <div *ngIf="plannedPlaces">
+      <div *ngIf="(plannedPlaces.length >= 1)">
         <div class="place" *ngFor="let place of plannedPlaces">
           <img class="place-img" src="{{place.imageUrl}}" />
           <p class="preview">{{place.name}}</p>
           <a class="info-btn" routerLink="{{place.placeId}}/details"> More Info </a>
+          <a class="info-btn" routerLink="/planned" (click)="deletePlan(place.placeId)"> Remove from plans </a>
+
         </div>
       </div>
   
-      <h1 *ngIf="!plannedPlaces">No plans to show!</h1>
+      <h1 *ngIf="(plannedPlaces.length == 0)">No plans to show!</h1>
     </div>
 
     <div class="places" *ngIf="isAdding">
@@ -17,6 +22,7 @@
           <img class="place-img" src="{{place.imageUrl}}" />
           <p class="preview">{{place.name}}</p>
           <a class="info-btn" routerLink="{{place.placeId}}/details"> More Info </a>
+          <a class="info-btn" routerLink="/planned" (click)="deletePlan(place.placeId)"> Remove from plans </a>
         </div>
       </div>
     </div>

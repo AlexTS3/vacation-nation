@@ -4,6 +4,9 @@
         <h1 class="place-count">Added places: {{userPlaces.length}}</h1>
         <a routerLink="planned">My Planned Places</a>
     </div>
+    <div *ngIf="isLoading">
+        <app-loader></app-loader>
+    </div>
     <div class="places" *ngIf="userPlaces.length > 0">
         <div *ngFor="let place of userPlaces" class="place">
             <img src="{{place.imageUrl}}" alt="">

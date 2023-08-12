@@ -1,19 +1,39 @@
 import { Component } from '@angular/core';
 import { UserServiceService } from '../user-service.service';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { passwordsValidator } from 'src/app/shared/validators/passwords-validator';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  constructor(
+    private userService: UserServiceService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  constructor(private userService: UserServiceService, private router: Router) {}
+  form = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    passwordsGroup: this.formBuilder.group(
+      {
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        rePassword: ['', [Validators.required]],
+      },
+      {
+        validators: [passwordsValidator('password', 'rePassword')],
+      }
+    ),
+  });
 
-  registerUser(form: NgForm): void {
-    const {email, userName, password} = form.value;
+  registerUser(): void {
+    const {
+      email,
+      passwordsGroup: { password },
+    } = this.form.value;
     this.userService.register(email, password);
     this.router.navigate(['/']);
   }

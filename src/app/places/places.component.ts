@@ -8,6 +8,7 @@ import { PlacesService } from './places.service';
 })
 export class PlacesComponent implements OnInit {
   placesArr: any = [];
+  isLoading: boolean = true;
 
   constructor(private placesService: PlacesService) {}
 
@@ -17,6 +18,7 @@ export class PlacesComponent implements OnInit {
       if(this.placesArr){
         this.placesArr = Object.values(this.placesArr);
       }
+      this.isLoading = false;
     });
   }
 }

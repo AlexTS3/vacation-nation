@@ -1,29 +1,39 @@
 <div class="wrapper">
-  <div class="form-info">
+  <div class="form-container">
     <h2>Search places:</h2>
 
     <input
       type="text"
       #searchInput
-      placeholder="Search Products"
+      required
+      placeholder="Search Destinations"
     />
-    <a routerLink="/search" (click)="searchPlace(searchInput.value)">Search</a>
 
-    <div class="wrapper">
-            <div class="places">
-              <div *ngIf="places.length > 0">
-                <div class="place" *ngFor="let place of places">
-                  <img class="place-img" src="{{place.imageUrl}}" />
-                  <p class="preview">{{place.name}}</p>
-                  <a class="info-btn" routerLink="places/{{place.placeId}}/details"> More Info </a>
-                </div>
-              </div>
-          
-              
-              <h1 *ngIf="places.length == 0">Search places here!</h1>
+    <button routerLink="/search" (click)="searchPlace(searchInput.value)">
+      Let's look around
+    </button>
+
+    <div *ngIf="isLoading">
+      <app-loader></app-loader>
+    </div>
+    <div class="wrapper" *ngIf="!isLoading">
+      <div class="places">
+        <div class="place-hover" *ngIf="places.length > 0">
+          <div class="place" *ngFor="let place of places">
+            <div class="place-img">
+              <img src="{{ place.imageUrl }}" />
+            </div>
+            <div class="preview">
+              <p>{{ place.name }}</p>
+            </div>
+            <div class="info-btn">
+              <a routerLink="places/{{ place.placeId }}/details"> More Info </a>
             </div>
           </div>
+        </div>
 
-    <h2><a routerLink="/">Home Page</a></h2>
+        <h1 *ngIf="places.length == 0">Search places here!</h1>
+      </div>
+    </div>
   </div>
 </div>

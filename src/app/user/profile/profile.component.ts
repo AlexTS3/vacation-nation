@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   userPlaces: any = [];
   currentPlaces: any = [];
   user: any = '';
+  isLoading: boolean = true;
   constructor(
     private database: Database,
     private placeService: PlacesService,
@@ -25,7 +26,6 @@ export class ProfileComponent implements OnInit {
     const currentUser = this.userInfo.getUserData();
     this.placeService.getPlaces().subscribe((places) => {
       this.currentPlaces = places;
-      console.log(this.currentPlaces)
       if(places){
         this.currentPlaces = Object.values(this.currentPlaces);
         this.currentPlaces.forEach((place: any) => {
@@ -34,15 +34,18 @@ export class ProfileComponent implements OnInit {
           }
         });
       }
-
-      console.log(this.userPlaces);
+      this.isLoading= false
     });
     // console.log(user['uid']);
     // console.log(user);
   }
 
   deletePlace(placeId: string) {
-    remove(ref(this.database, 'places/' + placeId));
-    this.router.routerState
+    const confirmation = confirm('Are you sure you want to delete this place?')
+
+    if(confirmation){
+      remove(ref(this.database, 'places/' + placeId));
+      this.router.navigate['places']
+    }
   }
 }

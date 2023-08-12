@@ -5,8 +5,21 @@
     <form #form="ngForm" (ngSubmit)="addPlace(form)" class="activity">
       <div class="place-select">
         <label for="name">What is your destination?</label>
-        <input type="text" id="name" name="name" ngModel #inputName="ngModel" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          ngModel
+          required
+          #inputName="ngModel"
+        />
       </div>
+
+      <ng-container *ngIf="inputName?.touched">
+        <p class="error" *ngIf="inputName?.errors?.['required']">
+          Name is required!
+        </p>
+      </ng-container>
 
       <div class="add-img">
         <label for="imageUrl">Add Image Url</label>
@@ -15,9 +28,16 @@
           id="imageUrl"
           name="imageUrl"
           ngModel
+          required
           #inputImageUrl="ngModel"
         />
       </div>
+
+      <ng-container *ngIf="inputImageUrl?.touched">
+        <p class="error" *ngIf="inputImageUrl?.errors?.['required']">
+          Image link is required!
+        </p>
+      </ng-container>
 
       <div class="description-input">
         <label for="description">Add description:</label>
@@ -27,9 +47,16 @@
           cols="10"
           name="description"
           ngModel
+          required
           #inputDescription="ngModel"
         ></textarea>
       </div>
+
+      <ng-container *ngIf="inputDescription?.touched">
+        <p class="error" *ngIf="inputDescription?.errors?.['required']">
+          Description is required!
+        </p>
+      </ng-container>
 
       <input type="submit" value="Add" />
     </form>

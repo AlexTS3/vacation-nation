@@ -13,6 +13,7 @@ export class PlannedComponent implements OnInit {
   place: PlaceInterface;
   plannedPlaces: PlaceInterface[] = [];
   isAdding: boolean = false;
+  isLoading: boolean = true;
   constructor(
     private userService: UserServiceService,
     private router: Router,
@@ -28,31 +29,44 @@ export class PlannedComponent implements OnInit {
     } else {
       this.renderPlanned(userId);
     }
+    this.isLoading = false
   }
 
   addToPlans(userId: string, placeId: string) {
-    this.isAdding = true;
-    const place = this.placesService
-      .getPlaceById(placeId)
-      .subscribe((placeData: any) => {
-        this.place = placeData;
-        this.isAdding = true;
-        console.log(this.place);
-        console.log(this.isAdding)
-        this.placesService.addToPlans(userId, this.place);
-      });
     if (!userId) {
       this.router.navigate(['login']);
     }
+    this.isAdding = true;
+    this.placesService.getPlaceById(placeId).subscribe((placeData: any) => {
+      this.place = placeData;
+      console.log(this.place);
+      console.log(this.isAdding);
+      this.placesService.addToPlans(userId, this.place);
+    });
   }
 
   renderPlanned(userId: string) {
     this.isAdding = false;
+    this.plannedPlaces = [];
+    let plannedPlaceId = '';
     this.placesService.getPlanned().subscribe((planned: any) => {
-      const plannedPlaces: any = Object.values(planned);
-      this.plannedPlaces = plannedPlaces;
-        console.log(this.isAdding)
 
+      const plannedPlaces: any = Object.values(planned);
+      plannedPlaces.forEach((plannedPlace: any) => {
+        plannedPlaceId = `${userId + ' ' + plannedPlace['placeId']}`;
+        if (planned[plannedPlaceId]) {
+          this.plannedPlaces.push(planned[plannedPlaceId]);
+        }
+      });
+
+      console.log(this.plannedPlaces);
     });
+  }
+
+  deletePlan(placeId: string){
+    const userId = this.userService.getUserData()['uid'];
+    const removeId = `${userId + ' ' + placeId}`
+    this.placesService.deletePlanned(removeId);
+    this.router.navigate['places']
   }
 }
