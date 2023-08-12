@@ -1,34 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import {PlaceInterface} from '../../intefaces';
+import { PlaceInterface } from '../../intefaces/Place';
 import { NgForm, FormBuilder } from '@angular/forms';
 import { PlacesService } from '../places.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  searchValue = '';
+  searchResult: PlaceInterface | undefined;
   places: PlaceInterface[] = [];
-  searchForm = this.fb.nonNullable.group({
-    searchValue: '',
-  });
 
-  constructor(private placesService: PlacesService, private fb: FormBuilder){}
+  constructor(
+    private placesService: PlacesService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    
+    const query = this.route.snapshot.paramMap.get('query');
+
+    this.searchPlace(query)
+    // this.searchResult = place
   }
 
-  getPlaceData(): void {
-    this.placesService.searchPlaces(this.searchValue).subscribe((places) => {
-      this.places = places
-    })
-  }
-
-  searchPlaces(form: NgForm): void {
-    this.searchValue = form.value ?? '';
-    this.getPlaceData();
+  searchPlace(query: string) {
+    this.places = [];
+    // const query = this.route.snapshot.paramMap.get('query');
+    this.placesService.searchPlaces()
+    .forEach((places) => {
+      Object.values(places).forEach((check: any) => {
+        const checkName = check['name'].toLowerCase().split(' ')
+        const includes = checkName.includes(query.toLowerCase())
+        if(includes){
+          this.places.push(check)
+        }
+      })
+    });
+    this.router.navigate([`search/${query}`]);
   }
 }

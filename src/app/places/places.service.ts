@@ -1,13 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Database, set, ref, update, onValue, remove } from '@angular/fire/database';
+import {
+  Database,
+  set,
+  ref,
+  update,
+  onValue,
+  remove,
+} from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import {PlaceInterface} from '../intefaces'
+import { PlaceInterface } from '../intefaces/Place';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlacesService {
+  place: PlaceInterface | undefined;
   places: any = [];
   returnPlaces: any = [];
   currentPlace: any = [];
@@ -19,9 +27,9 @@ export class PlacesService {
     );
   }
 
-  searchPlaces(searchValue: string): Observable<PlaceInterface[]> {
+  searchPlaces() {
     return this.http.get<PlaceInterface[]>(
-      'https://vacation-nation-91ae6-default-rtdb.firebaseio.com/places.json'
+      `https://vacation-nation-91ae6-default-rtdb.firebaseio.com/places.json`
     );
   }
 
@@ -48,12 +56,12 @@ export class PlacesService {
   }
 
   updatePlace(placeId: string, data: object) {
-    console.log(placeId)
-    console.log(data)
-    update(ref(this.database, 'places/' + placeId), data)
+    console.log(placeId);
+    console.log(data);
+    update(ref(this.database, 'places/' + placeId), data);
   }
 
- delete(placeId: string) {
-    remove(ref(this.database, 'places/' + placeId))
- }
+  delete(placeId: string) {
+    remove(ref(this.database, 'places/' + placeId));
+  }
 }

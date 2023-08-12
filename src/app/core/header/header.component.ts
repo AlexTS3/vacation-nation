@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
     this.isLogged$ = this.userService.isLogged();
 
     
-    console.log(this.isLogged$)
     // this.user = JSON.parse(localStorage.getItem('Current-User')!);
 
   }

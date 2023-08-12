@@ -6,6 +6,7 @@ import { MyPlacesComponent } from './my-places/my-places.component';
 import { PlannedComponent } from './planned/planned.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'places/:placeId/edit',
     component: EditComponent,
+  },
+  {
+    path: 'search/:query',
+    component: SearchComponent,
   },
 ];
 
