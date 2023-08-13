@@ -1,27 +1,42 @@
-# VacationNation
+Vacation Nation is an application that lets users search, add or look through holidays destinations.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
+The functionality of the page depends on the status which the user has.
 
-## Development server
+All users can: 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+-See the home page
 
-## Code scaffolding
+-Search for places by name 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-See all added destinations 
 
-## Build
+-Read about page 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+-See details page for destinations
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+Guest users can: 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+-Register as users 
 
-## Further help
+-Login as users
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+Logged in users can: 
+
+-Add destinations 
+
+-Edit their own destinations 
+
+-Delete destinations they have created 
+
+-Add destinations to their plans 
+
+-Remove destinations from their plans 
+
+-Logout
+
+
+The application has styles to improve the UI and UX and make searching for destinations a wonderful experience.
