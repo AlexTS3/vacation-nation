@@ -1,16 +1,21 @@
 <div class="wrapper">
   <form [formGroup]="form" (ngSubmit)="login()">
-    <h2>Login</h2>
+    <div class="login">
+      <h2>Login</h2>
+    </div>
 
-    <label for="userName"><span>Enter your username:</span></label>
-    <input
-      type="userName"
-      name="userName"
-      id="userName"
-      class="userName"
-      placeholder="Username"
-      formControlName="email"
-    />
+    <div class="label">
+      <label for="userName"><span>Enter your username:</span></label>
+      <br />
+      <input
+        type="userName"
+        name="userName"
+        id="userName"
+        class="userName"
+        placeholder="Username"
+        formControlName="email"
+      />
+    </div>
 
     <ng-container *ngIf="form.get('email')?.touched">
       <p class="error" *ngIf="form.get('email')?.errors?.['required']">
@@ -21,16 +26,18 @@
       </p>
     </ng-container>
 
-    <label for="password"><span>Enter your password:</span></label>
-    <input
-      type="password"
-      name="password"
-      id="password"
-      class="password"
-      placeholder="********"
-      formControlName="password"
-
-    />
+    <div class="label">
+      <label for="password"><span>Enter your password:</span></label>
+      <br />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="password"
+        placeholder="********"
+        formControlName="password"
+      />
+    </div>
 
     <ng-container *ngIf="form.get('password')?.touched">
       <p class="error" *ngIf="form.get('password')?.errors?.['required']">
@@ -43,7 +50,7 @@
 
     <button [disabled]="form.invalid">Login</button>
 
-    <p>
+    <p class="register">
       Don't have an account?
       <a routerLink="/register">Register Here!</a>
     </p>

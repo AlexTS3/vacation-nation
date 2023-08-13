@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
+
+.wrapper {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 75vh;
+  font-size: 20px;
+  background-color: rgb(248, 191, 122);
+}
+
+.add-place .title {
+  font-family: "Roboto Slab", serif;
+  font: bold;
+  font-size: 30px;
+}
+
+.add-place form .place-select {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-place form .place-select label{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.add-place form .place-select input {
+    width: 300px;
+    height: 20px;
+    font-size: 20px;
+    align-self: center;
+    padding: 10px;
+}
+
+.add-place form .add-img {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-place form .add-img label{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.add-place form .add-img input {
+    width: 300px;
+    height: 20px;
+    font-size: 20px;
+    align-self: center;
+    padding: 10px;
+}
+
+.add-place form .description-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-place form .description-input label{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.add-place form .description-input textarea {
+    width: 300px;
+    height: 100px;
+    font-size: 20px;
+    align-self: center;
+    padding: 10px;
+}
+
+.wrapper .add-place form .button input {
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.wrapper .add-place form .button input:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.02);
+    border: 2px solid black;
+}

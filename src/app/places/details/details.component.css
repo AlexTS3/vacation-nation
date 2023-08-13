@@ -1,1 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
+
+.wrapper {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 75vh;
+  font-size: 20px;
+  background-color: rgb(248, 191, 122);
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 900px;
+  height: 670px;
+  margin: 10px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  transition: 0.5s;
+}
+
+.profileContainer .place-name {
+  font-family: "Roboto Slab", serif;
+  font: bold;
+  font-size: 25px;
+}
+
+.profileContainer .details-img img {
+    width: 500px;
+}
+
+.profileContainer .place-description p {
+    font-size: 20px;
+    font-family: "Roboto Slab", serif;
+}
+
+.profileContainer .place-description .detailsBtns {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.profileContainer .place-description .detailsBtns a {
+    width: 200px;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+.profileContainer .place-description .detailsBtns a:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}

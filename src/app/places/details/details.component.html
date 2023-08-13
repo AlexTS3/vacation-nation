@@ -1,7 +1,9 @@
 <div class="wrapper">
   <div class="profileContainer" *ngIf="currentPlace">
 
-    <h1>{{currentPlace?.name}}</h1>
+    <div class="place-name">
+      <h1>{{currentPlace?.name}}</h1>
+    </div>
   
     <div class="details-img">
       <img src="{{currentPlace?.imageUrl}}" class="place" />
@@ -23,6 +25,4 @@
       </div>
     </div>
   </div>
-
-  <h2><a routerLink="/">Home Page</a></h2>
 </div>

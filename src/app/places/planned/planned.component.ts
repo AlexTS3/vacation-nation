@@ -39,8 +39,6 @@ export class PlannedComponent implements OnInit {
     this.isAdding = true;
     this.placesService.getPlaceById(placeId).subscribe((placeData: any) => {
       this.place = placeData;
-      console.log(this.place);
-      console.log(this.isAdding);
       this.placesService.addToPlans(userId, this.place);
     });
   }
